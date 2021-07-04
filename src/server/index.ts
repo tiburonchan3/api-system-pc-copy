@@ -74,7 +74,7 @@ class Server {
         //this.app.set('view engine', 'ejs')
 
         //CORS
-        this.app.use(cors({ origin: ['https://client-systempc.vercel.app',"https://system-pc.netlify.app"], credentials: true }));
+        this.app.use(cors({ origin: ['http://localhost:3000',"http://localhost:3001"], credentials: true }));
 
         //fileupload
         this.app.use(fileUpload());
@@ -88,7 +88,7 @@ class Server {
         //this.app.get('/', (req, res) => res.render('index'));
     }
 
-    //Declaracion de rutas de la aplicacion
+    //Declaracion de rutas de l a aplicacion
     routes() {
         this.app.use(this.routenames.empleado, routesEmpleado)
         this.app.use(this.routenames.cliente, RoutesCliente)
@@ -121,7 +121,7 @@ class Server {
     private sockets() {
         this.io = new SocketIO.Server(this.httpServer, {
             cors: {
-                origin: ['https://client-systempc.vercel.app',"https://system-pc.netlify.app"],
+                origin: ['http://localhost:3000',"http://localhost:3001"],
                 allowedHeaders: 'Content-Type',
                 methods: 'GET, POST',
                 credentials: true,
